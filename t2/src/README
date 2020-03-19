@@ -1,0 +1,61 @@
+Cocor Miruna-Alondra, 322CA
+Proiect Etapa 2
+	Spre deosebire de prima etapa, in aceasta etapa am adaugat
+4 pachete noi:
+- angels:
+	- contine ingerii ce iau parte la joc
+- angelvisitors:
+	- contine efectele ingerilor ce vor fi aplicate pe fiecare
+	erou in momentul aparitiei ingerului corespunzator efectului
+- observers:
+	- contine clasa Magician, observerul acestui joc
+- strategies:
+	- contine strategiile aplicate de eroi in anumite situatii
+
+	Pentru a realiza efectele ingerilor asupra jucatorilor am
+folosit ca design pattern Visitor, intocmind 10 clase ce
+extind interfata AngelVisitor. Fiecare clasa are cate 4 metode
+de visit, corespunzatoare cate unui erou, pentru a aplica
+efectul tau asupra respectivului erou. Fiecare visitor are
+ca membru ingerul caruia ii corespunde efectul pentru ca in
+cadrul metodei save, din interiorul clasei abstracte Angel
+sa poata fi apelata metoda visit, aplicata unui erou la modul
+generic, urmand ca acesta sa fie ales de compilator in functie
+de instanta sa.
+
+	La implementarea strategiilor, am utilizat design pattern-ul
+Strategy. Am implementat interfata Strategy cu cele 2 metode, 
+modifyDmg si modifyHp, ce vor fi implementate in cadrul celor
+8 strategii, cate 2 pentru fiecare erou, in functie de hp-ul
+curent al acestuia. In interiorul fiecarei clase corespunzatoare
+unui erou am adaugat o noua metoda, applyStrategy, in cadrul
+careia verific daca hp-ul curent se incadreaza in limitele cerute
+pentru a putea fi aplicata una dintre cele 2 strategii. 
+
+	In cadrul implementarii clasei Magician am folosit design
+pattern-ul Observer, folosind clasa Observable si interfata Observer,
+deja implementate. Clasele Hero si Angel extind clasa Observable
+pentru a implementa metodele notifyObservers, ce primeste un
+mesaj ca parametru ce va fi afisat si addObservers care
+adauga observatori intr-o lista. Sunt mai multe tipuri
+de mesaje create prin intermediul metodelor: benefits, spawned(clasa Angel),
+killedByHero, killedByAngel, reachedLevel, broughtToLife(clasa Hero).
+In clasa Magician am implementat metoda update ce va realiza
+afisarea in fisier a mesajului transmis de inger/erou.
+
+	Jocul propriu-zis este realizat in cadrul metodei main din clasa
+Main, astfel: in cadrul unei runde se ataca cei 2 eroi(prin intermediul
+functiei attack din cadrul clasei Hero in care se folosesc visitorii
+pentru abilitatile eroilor), se verifica daca hp-ul lor este mai mic
+sau egal cu 0, se actualizeaza xp-ul si level-ul jucatorilor, in cazul
+in care unul a fost omorat de celalalt. La finalul rundei se verifica
+daca pe pozitia corespunzatoare numarului rundei din lista noAngelsPerRound
+ sunt ingeri. Daca sunt si se afla in aceeasi pozitie
+cu eroii, acestia vor aplica efectele lor asupra ingerilor. La inceputul
+fiecarei runde se verifica daca ambii eroi sunt vii pentru a se ataca si
+dupa fiecare atac se verifica, din nou, hp-ul pentru a se realiza afisarea.
+Dupa atacul celor 2, se verifica vectorul NoAngelsPerRound in functie de runda
+la care se afla jocul si se aplica efectele acestora asupra eroilor. Dupa
+aplicarea unui efect, se verifica daca eroul a trecut un alt nivel sau daca
+acesta a murit si se afiseaza un mesaj corespunzator. La finalul rundelor
+se actualizeaza nivelul si hp-ul eroilor si se afiseaza rezultatele.

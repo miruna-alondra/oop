@@ -1,0 +1,11 @@
+Starting audit...
+[ERROR] /Users/miruna/Downloads/t2/src/heroes/Hero.java:297:5: Class 'Hero' looks like designed for extension (can be subclassed), but the method 'reachedLevel' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Hero' final or making the method 'reachedLevel' static/final/abstract/empty, or adding allowed annotation for the method. [DesignForExtension]
+[ERROR] /Users/miruna/Downloads/t2/src/heroes/Hero.java:310:5: Class 'Hero' looks like designed for extension (can be subclassed), but the method 'broughtToLife' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Hero' final or making the method 'broughtToLife' static/final/abstract/empty, or adding allowed annotation for the method. [DesignForExtension]
+[ERROR] /Users/miruna/Downloads/t2/src/heroes/Knight.java:18:28: Inner assignments should be avoided. [InnerAssignment]
+[ERROR] /Users/miruna/Downloads/t2/src/heroes/Rogue.java:19:27: Inner assignments should be avoided. [InnerAssignment]
+[ERROR] /Users/miruna/Downloads/t2/src/heroes/Wizard.java:18:27: Inner assignments should be avoided. [InnerAssignment]
+[ERROR] /Users/miruna/Downloads/t2/src/heroes/Pyromancer.java:18:27: Inner assignments should be avoided. [InnerAssignment]
+[ERROR] /Users/miruna/Downloads/t2/src/input/GameInput.java:50:12: More than 7 parameters (found 9). [ParameterNumber]
+[ERROR] /Users/miruna/Downloads/t2/src/main/Main.java:60:5: Method length is 267 lines (max allowed is 150). [MethodLength]
+Audit done.
+Checkstyle ends with 8 errors.
